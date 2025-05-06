@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 17, 2023 at 11:26 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th5 06, 2025 lúc 04:15 AM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,35 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_ecommerce`
+-- Cơ sở dữ liệu: `db_merchshop`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bags`
---
-
-CREATE TABLE `bags` (
-  `id` int(10) NOT NULL,
-  `bags_category_name` varchar(50) NOT NULL,
-  `bags_category_quantity` int(10) DEFAULT 0,
-  `bags_category_status` binary(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `bags`
---
-
-INSERT INTO `bags` (`id`, `bags_category_name`, `bags_category_quantity`, `bags_category_status`) VALUES
-(1, 'Shopping Bag', 62, 0x31),
-(2, 'Purse', 35, 0x31),
-(3, 'Wallet', 75, 0x31);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `banner`
+-- Cấu trúc bảng cho bảng `banner`
 --
 
 CREATE TABLE `banner` (
@@ -59,18 +37,18 @@ CREATE TABLE `banner` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `banner`
+-- Đang đổ dữ liệu cho bảng `banner`
 --
 
 INSERT INTO `banner` (`banner_id`, `banner_subtitle`, `banner_title`, `banner_items_price`, `banner_image`, `banner_status`) VALUES
-(1, 'Trending item', 'Women\'s latest fashion sale', 20, 'banner-1.jpg', 0x31),
-(2, 'Trending accessories', 'Modern sunglasses', 15, 'banner-2.jpg', 0x31),
-(3, 'Sale Offer', 'New fashion summer sale', 29, 'banner-3.jpg', 0x31);
+(1, 'Short n\' Sweet Collection', 'Latest sale merch', 20, 'banner-1.jpg', 0x31),
+(2, 'Trending merch', 'Cute n\' girly', 15, 'banner-2.jpg', 0x31),
+(3, 'Sale Offer', 'Cheap and sweet', 29, 'banner-3.jpg', 0x31);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Cấu trúc bảng cho bảng `category`
 --
 
 CREATE TABLE `category` (
@@ -83,23 +61,18 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `category`
+-- Đang đổ dữ liệu cho bảng `category`
 --
 
 INSERT INTO `category` (`id`, `name`, `img`, `created_at`, `updated_at`, `status`) VALUES
-(1, 'Clothes', 'dress.svg', '2022-11-08 17:05:38', '2022-11-08 22:05:38', 0x31),
-(2, 'Footwear', 'shoes.svg', '2022-11-08 17:05:38', '2022-11-08 22:05:38', 0x31),
-(3, 'Jewelry', 'jewelry.svg', '2022-11-08 17:05:38', '2022-11-08 22:05:38', 0x31),
-(4, 'Perfume', 'perfume.svg', '2022-11-08 17:05:38', '2022-11-08 22:05:38', 0x31),
-(5, 'Cosmetics', 'cosmetics.svg', '2022-11-08 17:05:38', '2022-11-08 22:05:38', 0x31),
-(6, 'Glasses', 'glasses.svg', '2022-11-08 17:05:38', '2022-11-08 22:05:38', 0x31),
-(7, 'Bags', 'bag.svg', '2022-11-08 17:05:38', '2022-11-08 22:05:38', 0x31),
-(8, 'Electronics', 'watch.svg', '2022-11-08 17:05:38', '2022-11-08 22:05:38', 0x31);
+(4, 'Merchandise', 'perfume.svg', '2022-11-08 17:05:38', '2025-04-22 00:22:50', 0x31),
+(5, 'Music', 'cosmetics.svg', '2022-11-08 17:05:38', '2025-04-22 00:23:02', 0x31),
+(6, 'Collections', 'glasses.svg', '2022-11-08 17:05:38', '2025-04-22 00:23:33', 0x31);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_bar`
+-- Cấu trúc bảng cho bảng `category_bar`
 --
 
 CREATE TABLE `category_bar` (
@@ -111,7 +84,7 @@ CREATE TABLE `category_bar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `category_bar`
+-- Đang đổ dữ liệu cho bảng `category_bar`
 --
 
 INSERT INTO `category_bar` (`id`, `category_title`, `category_quantity`, `category_img`, `category_status`) VALUES
@@ -126,76 +99,30 @@ INSERT INTO `category_bar` (`id`, `category_title`, `category_quantity`, `catego
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category_electronics`
+-- Cấu trúc bảng cho bảng `collections`
 --
 
-CREATE TABLE `category_electronics` (
+CREATE TABLE `collections` (
   `id` int(10) NOT NULL,
-  `category_name` varchar(30) NOT NULL,
-  `status` int(10) NOT NULL
+  `perfume_category_name` varchar(50) NOT NULL,
+  `perfume_category_quantity` int(10) DEFAULT 0,
+  `perfume_category_status` binary(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `category_electronics`
+-- Đang đổ dữ liệu cho bảng `collections`
 --
 
-INSERT INTO `category_electronics` (`id`, `category_name`, `status`) VALUES
-(1, 'Desktop', 1),
-(2, 'Laptop', 1),
-(3, 'Camera', 1),
-(4, 'Tablet', 1),
-(5, 'Headphone', 1);
+INSERT INTO `collections` (`id`, `perfume_category_name`, `perfume_category_quantity`, `perfume_category_status`) VALUES
+(1, 'Tour', 12, 0x31),
+(2, 'Short n Sweet', 60, 0x31),
+(3, 'Emails i cant sent', 50, 0x31),
+(4, 'Fragrance', 87, 0x31);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `clothes`
---
-
-CREATE TABLE `clothes` (
-  `id` int(10) NOT NULL,
-  `cloth_category_name` varchar(50) NOT NULL,
-  `cloth_category_quantity` int(10) DEFAULT 0,
-  `coloth_category_status` binary(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `clothes`
---
-
-INSERT INTO `clothes` (`id`, `cloth_category_name`, `cloth_category_quantity`, `coloth_category_status`) VALUES
-(1, 'Shirt', 300, 0x31),
-(2, 'shorts & jeans', 60, 0x31),
-(4, 'jacket', 50, 0x31),
-(5, 'dress & frock', 87, 0x31);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cosmetics`
---
-
-CREATE TABLE `cosmetics` (
-  `id` int(10) NOT NULL,
-  `cosmetics_category_name` varchar(50) NOT NULL,
-  `cosmetics_category_quantity` int(10) DEFAULT 0,
-  `cosmetics_category_status` binary(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `cosmetics`
---
-
-INSERT INTO `cosmetics` (`id`, `cosmetics_category_name`, `cosmetics_category_quantity`, `cosmetics_category_status`) VALUES
-(1, 'Shampoo', 68, 0x31),
-(2, 'Sunscreen', 46, 0x31),
-(3, 'Body Wash', 79, 0x31),
-(4, 'Makeup Kit', 23, 0x31);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer`
+-- Cấu trúc bảng cho bảng `customer`
 --
 
 CREATE TABLE `customer` (
@@ -209,16 +136,18 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `customer`
+-- Đang đổ dữ liệu cho bảng `customer`
 --
 
 INSERT INTO `customer` (`customer_id`, `customer_fname`, `customer_email`, `customer_pwd`, `customer_phone`, `customer_address`, `customer_role`) VALUES
-(9, 'FahadAdmin', 'dev.shahfahad@gmail.com', 'adminfahad', '03469589557', 'Peshawar, Pakistan', 'admin');
+(9, 'kimo', 'kimo@gmail.com', 'kimo@gmail.com', '03469589557', 'vietnam', 'admin'),
+(24, 'kimo', '149oanh@gmail.com', '149oanh@gmail.com', '923456123421', '149oanh@gmail.com', 'normal'),
+(25, 'do thi kim oanh', 'kimokasdlfl@gmail.com', 'kimokasdlfl@gmail.com', '921234512345', 'Hoai Duc', 'normal');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `deal_of_the_day`
+-- Cấu trúc bảng cho bảng `deal_of_the_day`
 --
 
 CREATE TABLE `deal_of_the_day` (
@@ -234,20 +163,20 @@ CREATE TABLE `deal_of_the_day` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `deal_of_the_day`
+-- Đang đổ dữ liệu cho bảng `deal_of_the_day`
 --
 
 INSERT INTO `deal_of_the_day` (`deal_id`, `deal_title`, `deal_description`, `deal_net_price`, `deal_discounted_price`, `available_deal`, `sold_deal`, `deal_image`, `deal_status`) VALUES
-(1, 'shampoo, conditioner & facewash packs', 'Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor\r\n                        dolor sit amet consectetur Lorem ipsum dolor', 200.00, 150.00, 40, 20, 'shampoo.jpg', 0x31),
-(2, 'Rose Gold diamonds Earring', 'Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor\r\n                        dolor sit amet consectetur Lorem ipsum dolor', 250.00, 190.00, 40, 15, 'jewellery-1.jpg', 0x31);
+(1, 'fruitcake store exclusive LP', 'Rare olive green colour.', 200.00, 150.00, 40, 20, 'deal1.jpg', 0x31),
+(2, 'Nonsense / A Nonsense Christmas 7in', 'Burning red colour', 250.00, 190.00, 40, 15, 'deal2.jpg', 0x31);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `footwear`
+-- Cấu trúc bảng cho bảng `merchandise`
 --
 
-CREATE TABLE `footwear` (
+CREATE TABLE `merchandise` (
   `id` int(10) NOT NULL,
   `footwear_category_name` varchar(50) NOT NULL,
   `footwear_category_quantity` int(10) DEFAULT 0,
@@ -255,87 +184,73 @@ CREATE TABLE `footwear` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `footwear`
+-- Đang đổ dữ liệu cho bảng `merchandise`
 --
 
-INSERT INTO `footwear` (`id`, `footwear_category_name`, `footwear_category_quantity`, `footwear_category_status`) VALUES
-(1, 'Sports', 45, 0x31),
-(2, 'Formal', 75, 0x31),
-(3, 'Casual', 35, 0x31),
-(4, 'jacket', 50, 0x31),
-(5, 'Safety Shoes', 26, 0x31);
+INSERT INTO `merchandise` (`id`, `footwear_category_name`, `footwear_category_quantity`, `footwear_category_status`) VALUES
+(1, 'Accessories', 45, 0x31),
+(2, 'Apparel', 75, 0x31);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `glasses`
+-- Cấu trúc bảng cho bảng `music`
 --
 
-CREATE TABLE `glasses` (
+CREATE TABLE `music` (
   `id` int(10) NOT NULL,
-  `glasses_category_name` varchar(50) NOT NULL,
-  `glasses_category_quantity` int(10) DEFAULT 0,
-  `glasses_category_status` binary(1) DEFAULT NULL
+  `cloth_category_name` varchar(50) NOT NULL,
+  `cloth_category_quantity` int(10) DEFAULT 0,
+  `coloth_category_status` binary(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `glasses`
+-- Đang đổ dữ liệu cho bảng `music`
 --
 
-INSERT INTO `glasses` (`id`, `glasses_category_name`, `glasses_category_quantity`, `glasses_category_status`) VALUES
-(1, 'Sunglasses', 50, 0x31),
-(2, 'Lenses', 48, 0x31),
-(3, 'Lenses', 48, 0x31);
+INSERT INTO `music` (`id`, `cloth_category_name`, `cloth_category_quantity`, `coloth_category_status`) VALUES
+(1, 'Vinyl', 300, 0x31),
+(4, 'Physical', 50, 0x31),
+(5, 'Digital', 87, 0x31);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jewelry`
+-- Cấu trúc bảng cho bảng `orders`
 --
 
-CREATE TABLE `jewelry` (
-  `id` int(10) NOT NULL,
-  `Jewelry_category_name` varchar(50) NOT NULL,
-  `Jewelry_category_quantity` int(10) DEFAULT 0,
-  `Jewelry_category_status` binary(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `orders` (
+  `order_id` int(11) NOT NULL,
+  `customer_email` varchar(255) NOT NULL,
+  `customer_fname` varchar(100) DEFAULT NULL,
+  `customer_lname` varchar(100) DEFAULT NULL,
+  `customer_phone` varchar(30) DEFAULT NULL,
+  `address_house` varchar(255) DEFAULT NULL,
+  `address_street` varchar(255) DEFAULT NULL,
+  `address_city` varchar(100) DEFAULT NULL,
+  `address_postcode` varchar(20) DEFAULT NULL,
+  `address_country` varchar(100) DEFAULT NULL,
+  `paypal_order_id` varchar(50) NOT NULL,
+  `paypal_transaction_id` varchar(50) DEFAULT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `currency` varchar(3) NOT NULL,
+  `order_status` varchar(50) NOT NULL DEFAULT 'Pending',
+  `order_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `jewelry`
+-- Đang đổ dữ liệu cho bảng `orders`
 --
 
-INSERT INTO `jewelry` (`id`, `Jewelry_category_name`, `Jewelry_category_quantity`, `Jewelry_category_status`) VALUES
-(1, 'Earrings', 46, 0x31),
-(2, 'Couple Rings', 73, 0x31),
-(3, 'Necklace', 61, 0x31);
+INSERT INTO `orders` (`order_id`, `customer_email`, `customer_fname`, `customer_lname`, `customer_phone`, `address_house`, `address_street`, `address_city`, `address_postcode`, `address_country`, `paypal_order_id`, `paypal_transaction_id`, `amount`, `currency`, `order_status`, `order_date`) VALUES
+(9, 'oanh@gmail.com', 'oanh', 'kim', '0923842347', '56', 'Yen Xa', 'Tan Trieu Thanh Tri Ha Noi', '100000', 'Vietnam', '36B23039SP295051L', '9JB90725EH328153F', 58.00, 'USD', 'Paid', '2025-05-05 14:41:19'),
+(10, 'oanh@gmail.com', 'oanh', 'kim', '0923842347', '56', 'Yen Xa', 'Tan Trieu Thanh Tri Ha Noi', '100000', 'Vietnam', '5MU35487FE118072X', '66R136757Y7964832', 103.00, 'USD', 'Paid', '2025-05-05 14:42:39'),
+(11, 'oanh3@gmail.com', 'kim', 'kim', '0923842347', '56', 'Yen Xa', 'Tan Trieu Thanh Tri Ha Noi', '100000', 'Vietnam', '5V587715YG164430M', '3HV43259MR992183S', 158.00, 'USD', 'Paid', '2025-05-05 14:52:26');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `perfume`
---
-
-CREATE TABLE `perfume` (
-  `id` int(10) NOT NULL,
-  `perfume_category_name` varchar(50) NOT NULL,
-  `perfume_category_quantity` int(10) DEFAULT 0,
-  `perfume_category_status` binary(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `perfume`
---
-
-INSERT INTO `perfume` (`id`, `perfume_category_name`, `perfume_category_quantity`, `perfume_category_status`) VALUES
-(1, 'Clothes Perfume', 12, 0x31),
-(2, 'Deodorant', 60, 0x31),
-(3, 'jacket', 50, 0x31),
-(4, 'dress & frock', 87, 0x31);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `products`
+-- Cấu trúc bảng cho bảng `products`
 --
 
 CREATE TABLE `products` (
@@ -359,41 +274,25 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `products`
+-- Đang đổ dữ liệu cho bảng `products`
 --
 
 INSERT INTO `products` (`product_id`, `product_catag`, `product_title`, `product_price`, `product_desc`, `product_date`, `product_img`, `product_left`, `product_author`, `category_id`, `section_id`, `discounted_price`, `image_1`, `image_2`, `created_at`, `updated_at`, `status`) VALUES
-(1, 'men', 'jacket', 75, 'Mens Winter Leathers Jackets', '', 'jacket-3.jpg', 50, 'admin fahad', NULL, 7, 48.00, 'jacket-4.jpg', NULL, '2023-06-16 18:33:06', '2023-06-16 23:33:06', 0x31),
-(2, 'men', 'shirt', 56, 'Pure Garment Dyed Cotton Shirt', '', 'shirt-1.jpg', 50, 'admin fahad', NULL, 7, 45.00, 'shirt-2.jpg', NULL, '2023-06-16 18:33:06', '2023-06-16 23:33:06', 0x31),
-(3, 'men', 'Jacket', 65, 'MEN Yarn Fleece Full-Zip Jacket', '', 'jacket-5.jpg', 50, 'admin fahad', NULL, 7, 58.00, 'jacket-6.jpg', NULL, '2023-06-16 18:33:06', '2023-06-16 23:33:06', 0x31),
-(4, 'women', 'skirt', 25, 'Black Floral Wrap Midi Skirt', '', 'clothes-3.jpg', 50, 'admin fahad', NULL, 7, 35.00, 'clothes-4.jpg', NULL, '2023-06-16 18:33:06', '2023-06-16 23:33:06', 0x31),
-(5, 'men', 'casual', 105, 'Casual Men Brown shoes', '', 'shoe-2.jpg', 50, 'admin fahad', NULL, 7, 99.00, 'shoe-2_1.jpg', NULL, '2023-06-16 18:33:06', '2023-06-16 23:33:06', 0x31),
-(6, 'men', 'watches', 170, 'Pocket Watch Leather Pouch', '', 'watch-3.jpg', 50, 'admin fahad', NULL, 7, 150.00, 'watch-4.jpg', NULL, '2023-06-16 18:33:06', '2023-06-16 23:33:06', 0x31),
-(7, 'men', 'watches', 120, 'Smart watche Vital Plus', '', 'watch-1.jpg', 50, 'admin fahad', NULL, 7, 100.00, 'watch-2.jpg', NULL, '2023-06-16 18:33:06', '2023-06-16 23:33:06', 0x31),
-(8, 'women', 'party wear', 25, 'Womens Party Wear Shoes', '', 'party-wear-1.jpg', 50, 'admin fahad', NULL, 7, 30.00, 'party-wear-2.jpg', NULL, '2023-06-16 18:33:06', '2023-06-16 23:33:06', 0x31),
-(9, 'men', 'jacket', 45, 'Mens Winter Leathers Jackets', '', 'jacket-1.jpg', 50, 'admin fahad', NULL, 7, 32.00, 'jacket-2.jpg', NULL, '2023-06-16 18:33:06', '2023-06-16 23:33:06', 0x31),
-(10, 'men', 'sports', 64, 'Trekking & Running Shoes - black', '', 'sports-2.jpg', 50, 'admin fahad', NULL, 7, 58.00, 'sports-4.jpg', NULL, '2023-06-16 18:33:06', '2023-06-16 23:33:06', 0x31),
-(11, 'men', 'formal', 65, 'Men Leather Formal Wear shoes', '', 'shoe-1.jpg', 50, 'admin fahad', NULL, 7, 50.00, 'shoe-1_1.jpg', NULL, '2023-06-16 18:33:06', '2023-06-16 23:33:06', 0x31),
-(12, 'women', 'shorts', 85, 'Better Basics French Terry Sweatshorts', '', 'shorts-1.jpg', 50, 'admin fahad', NULL, 7, 78.00, 'shorts-2.jpg', NULL, '2023-06-16 18:33:06', '2023-06-16 23:33:06', 0x31),
-(13, 'men', 'Jeans', 12, 'New Jeans for men. New summer Sale                   ', '16,6,2023', 'pant2.png', 100, 'FahadAdmin', NULL, NULL, 10.00, '', NULL, '2023-06-16 19:52:58', '2023-06-17 01:00:16', 0x31),
-(14, 'men', 'Red Hoddie', 15, 'Red hoddie for men. New Design and bright color.', '16,6,2023', 'f3.png', 69, 'FahadAdmin', NULL, NULL, 12.00, '', NULL, '2023-06-16 20:02:15', '2023-06-17 01:02:15', 0x31),
-(15, 'men', 'Black T Shirt', 13, 'Black T Shit with half sleeves for men. Both summer and winter. High fashon.', '16,6,2023', 'p4.png', 99, 'FahadAdmin', NULL, NULL, 10.00, '', NULL, '2023-06-16 20:05:07', '2023-06-17 01:05:07', 0x31),
-(16, 'all', 'T-Shirts', 16, 'Different color of t shirts pack of 3', '17,6,2023', 'p17.png', 150, 'FahadAdmin', NULL, NULL, 13.00, '', NULL, '2023-06-17 05:22:01', '2023-06-17 10:22:01', 0x31),
-(17, 'all', 'Glasses & Lens', 12, 'Bock blue light. Improve night vision. And stylish look.', '17,6,2023', 'g3.png', 50, 'FahadAdmin', NULL, NULL, 10.00, '', NULL, '2023-06-17 05:24:06', '2023-06-17 10:24:06', 0x31),
-(18, 'all', 'Jeans', 10, 'Jeans for both men and women.', '17,6,2023', 'f9.png', 100, 'FahadAdmin', NULL, NULL, 8.00, '', NULL, '2023-06-17 06:26:01', '2023-06-17 11:26:01', 0x31),
-(19, 'all', 'Kitty Dress', 15, 'Kitty bear dress for kids.', '17,6,2023', 'f10.png', 100, 'FahadAdmin', NULL, NULL, 12.00, '', NULL, '2023-06-17 06:27:33', '2023-06-17 11:27:33', 0x31),
-(20, 'all', 'Bag', 15, 'Large size bag for carrying different accessories.', '17,6,2023', 'topcard3.png', 50, 'FahadAdmin', NULL, NULL, 12.00, '', NULL, '2023-06-17 06:28:36', '2023-06-17 11:28:36', 0x31),
-(21, 'all', 'Sports Shoes', 15, 'Sport shoes. Jogging shoes. Gym shoes.', '17,6,2023', 'b2.png', 20, 'FahadAdmin', NULL, NULL, 12.00, '', NULL, '2023-06-17 06:30:08', '2023-06-17 11:30:08', 0x31),
-(22, 'women', 'Purse', 15, 'Ornage purse for stunning look and carry accessories.', '17,6,2023', 'p5.png', 100, 'FahadAdmin', NULL, NULL, 12.00, '', NULL, '2023-06-17 06:31:26', '2023-06-17 11:31:26', 0x31),
-(23, 'women', 'Casual Slippers', 15, 'Casual function slippers for female.', '17,6,2023', 'p7.png', 100, 'FahadAdmin', NULL, NULL, 12.00, '', NULL, '2023-06-17 06:32:33', '2023-06-17 11:32:33', 0x31),
-(24, 'all', 'Clothes Perfume', 15, 'Fresh Fragrance perfume. Indoor and outdoor', '17,6,2023', 'perfume.png', 100, 'FahadAdmin', NULL, NULL, 12.00, '', NULL, '2023-06-17 06:33:46', '2023-06-17 11:33:46', 0x31),
-(25, 'women', 'Formal Shoes', 15, 'Formal shoes for female. Indoor and outdoor.', '17,6,2023', 'p10.jpg', 100, 'FahadAdmin', NULL, NULL, 12.00, '', NULL, '2023-06-17 06:35:09', '2023-06-17 11:35:09', 0x31),
-(26, 'women', 'Socks', 10, 'Socks for indoor and outdoor.', '17,6,2023', 'f2.png', 100, 'FahadAdmin', NULL, NULL, 5.00, '', NULL, '2023-06-17 06:38:25', '2023-06-17 11:38:25', 0x31);
+(1, 'women', 'vinyl', 75, 'Short n\' Sweet (Deluxe) D2C Exclusive 2LP', '', 'pic1.jpg', 50, 'admin fahad', NULL, 7, 48.00, 'jacket-4.jpg', NULL, '2023-06-16 18:33:06', '2025-04-22 01:36:38', 0x31),
+(2, 'women', 'vinyl', 56, 'Taste 7in Single', '', 'pic2.jpg', 50, 'admin fahad', NULL, 7, 45.00, 'shirt-2.jpg', NULL, '2023-06-16 18:33:06', '2025-04-22 01:36:59', 0x31),
+(3, 'women', 'vinyl', 65, 'Bed Chem 7in', '', 'pic3.jpg', 50, 'admin fahad', NULL, 7, 58.00, 'jacket-6.jpg', NULL, '2023-06-16 18:33:06', '2025-04-22 01:38:18', 0x31),
+(4, 'women', 'accessories', 25, 'busy woman hat', '', 'pic4.jpg', 50, 'admin fahad', NULL, 7, 35.00, 'clothes-4.jpg', NULL, '2023-06-16 18:33:06', '2025-04-22 01:38:28', 0x31),
+(5, 'women', 'accessories', 105, 'espresso mini cup & saucer', '', 'pic5.jpg', 50, 'admin fahad', NULL, 7, 99.00, 'shoe-2_1.jpg', NULL, '2023-06-16 18:33:06', '2025-04-22 01:38:34', 0x31),
+(6, 'women', 'accessories', 170, 'short n\' sweet mug', '', 'pic6.jpg', 50, 'admin fahad', NULL, 7, 150.00, 'watch-4.jpg', NULL, '2023-06-16 18:33:06', '2025-04-22 01:38:40', 0x31),
+(7, 'women', 'Apparel\n', 120, 'got you blocked crop tank\n\n', '', 'pic7.jpg', 50, 'admin fahad', NULL, 7, 100.00, 'watch-2.jpg', NULL, '2023-06-16 18:33:06', '2025-04-22 01:41:35', 0x31),
+(8, 'women', 'Apparel\n', 25, 'that\'s that me crop tee', '', 'pic8.jpg', 50, 'admin fahad', NULL, 7, 30.00, 'party-wear-2.jpg', NULL, '2023-06-16 18:33:06', '2025-04-22 01:42:25', 0x31),
+(9, 'women', 'cd', 45, 'Short n\' Sweet (Deluxe) CD', '', 'pic9.jpg', 50, 'admin fahad', NULL, 7, 32.00, 'jacket-2.jpg', NULL, '2023-06-16 18:33:06', '2025-04-22 01:43:05', 0x31),
+(10, 'men', 'cd', 64, 'Short n\' Sweet Alternate Cover CD', '', 'pic10.jpg', 50, 'admin fahad', NULL, 7, 58.00, 'sports-4.jpg', NULL, '2023-06-16 18:33:06', '2025-04-22 01:43:25', 0x31);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviews`
+-- Cấu trúc bảng cho bảng `reviews`
 --
 
 CREATE TABLE `reviews` (
@@ -403,7 +302,7 @@ CREATE TABLE `reviews` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `reviews`
+-- Đang đổ dữ liệu cho bảng `reviews`
 --
 
 INSERT INTO `reviews` (`id`, `name`, `review`) VALUES
@@ -414,7 +313,7 @@ INSERT INTO `reviews` (`id`, `name`, `review`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `section`
+-- Cấu trúc bảng cho bảng `section`
 --
 
 CREATE TABLE `section` (
@@ -424,7 +323,7 @@ CREATE TABLE `section` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `section`
+-- Đang đổ dữ liệu cho bảng `section`
 --
 
 INSERT INTO `section` (`id`, `name`, `status`) VALUES
@@ -438,7 +337,7 @@ INSERT INTO `section` (`id`, `name`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `settings`
+-- Cấu trúc bảng cho bảng `settings`
 --
 
 CREATE TABLE `settings` (
@@ -448,134 +347,118 @@ CREATE TABLE `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `settings`
+-- Đang đổ dữ liệu cho bảng `settings`
 --
 
 INSERT INTO `settings` (`website_name`, `website_logo`, `website_footer`) VALUES
-('HCA E-Commerce', 'HCA-E-COMMERCE.png', 'HCA E-Commerce');
+('Sabrina Capenter Shop', 'HCA-E-COMMERCE.png', 'Sabrina Capenter Shop');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `bags`
---
-ALTER TABLE `bags`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `banner`
+-- Chỉ mục cho bảng `banner`
 --
 ALTER TABLE `banner`
   ADD PRIMARY KEY (`banner_id`);
 
 --
--- Indexes for table `category`
+-- Chỉ mục cho bảng `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `category_bar`
+-- Chỉ mục cho bảng `category_bar`
 --
 ALTER TABLE `category_bar`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `category_electronics`
+-- Chỉ mục cho bảng `collections`
 --
-ALTER TABLE `category_electronics`
+ALTER TABLE `collections`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `clothes`
---
-ALTER TABLE `clothes`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `cosmetics`
---
-ALTER TABLE `cosmetics`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `customer`
+-- Chỉ mục cho bảng `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`customer_id`),
   ADD UNIQUE KEY `customer_email` (`customer_email`);
 
 --
--- Indexes for table `deal_of_the_day`
+-- Chỉ mục cho bảng `deal_of_the_day`
 --
 ALTER TABLE `deal_of_the_day`
   ADD PRIMARY KEY (`deal_id`);
 
 --
--- Indexes for table `footwear`
+-- Chỉ mục cho bảng `merchandise`
 --
-ALTER TABLE `footwear`
+ALTER TABLE `merchandise`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `glasses`
+-- Chỉ mục cho bảng `music`
 --
-ALTER TABLE `glasses`
+ALTER TABLE `music`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `jewelry`
+-- Chỉ mục cho bảng `orders`
 --
-ALTER TABLE `jewelry`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`order_id`),
+  ADD UNIQUE KEY `paypal_order_id` (`paypal_order_id`),
+  ADD UNIQUE KEY `paypal_transaction_id` (`paypal_transaction_id`);
 
 --
--- Indexes for table `perfume`
---
-ALTER TABLE `perfume`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `products`
+-- Chỉ mục cho bảng `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`);
 
 --
--- Indexes for table `reviews`
+-- Chỉ mục cho bảng `reviews`
 --
 ALTER TABLE `reviews`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `banner`
+-- AUTO_INCREMENT cho bảng `banner`
 --
 ALTER TABLE `banner`
   MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `category_bar`
+-- AUTO_INCREMENT cho bảng `category_bar`
 --
 ALTER TABLE `category_bar`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `customer`
+-- AUTO_INCREMENT cho bảng `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `customer_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT cho bảng `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `product_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
